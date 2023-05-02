@@ -1,4 +1,4 @@
-package Aufgabe12;
+package Aufgabe13;
 
 public class ListeL<I extends Comparable<I>> {
 
@@ -79,6 +79,44 @@ public class ListeL<I extends Comparable<I>> {
     // Falls o nicht in Liste
     return -1;
   }
+
+  // Aufgabe 13
+
+  public void sort1() {
+    for (int i = 0; i < this.length()-1; i++) {
+      for(int j = i+1; j < this.length(); j++){
+        // nach kleinstem Element suchen
+        ElementL<I> minElement = this.getElement(i);
+        ElementL<I> jElement = this.getElement(j);
+        if(jElement.inhalt.compareTo(minElement.inhalt) < 0){
+          //Werte tauschen
+          I help = minElement.inhalt;
+          minElement.inhalt = jElement.inhalt;
+          jElement.inhalt = help;
+        }
+      }
+    }
+  }
+
+  private ElementL<I> getElement(int pos){
+    ElementL<I> help = head;
+    for(int i = 0; i<pos;i++){
+      help = help.next;
+    }
+    return help;
+  }
+
+  private int length() {
+    int count = 0;
+    ElementL<I> help = head;
+    while (help != null) {
+      count++;
+      help = help.next;
+    }
+
+    return count;
+  }
+  // Ende Aufgabe 13
 
   // Test
 
