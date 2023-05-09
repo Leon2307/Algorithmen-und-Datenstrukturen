@@ -7,6 +7,9 @@ public class Aufgabe20 {
         ks.push(1);
         ks.push(2);
         ks.push(3);
+        ks.pop();
+        ks.push(4);
+        ks.push(5);
 
         System.out.println(ks);
     }

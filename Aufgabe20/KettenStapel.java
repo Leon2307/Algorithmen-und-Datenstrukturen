@@ -20,7 +20,7 @@ public class KettenStapel<T> {
 
         Element<T> element = new Element<T>(o);
 
-        if(start == null){
+        if (start == null) {
             start = element;
             end = element;
         } else {
@@ -29,16 +29,36 @@ public class KettenStapel<T> {
         }
     }
 
-    public Element<T> pop(){
-        Element<T> element = new Element(1);
-        return element;
+    public Element<T> pop() {
+        Element<T> element = null;
+
+        if (start == null) {
+            return null;
+        }
+
+        Element<T> count = start;
+
+        while (count.next != null) {
+
+            if (count.next == end) {
+                element = count.next;
+                count.next = null;
+                end = count;
+                return element;
+            }
+
+            count = count.next;
+        }
+
+        return null;
+
     }
 
-    public String toString(){
+    public String toString() {
         String s = "";
         Element<T> temp = start;
-        while(temp != null){
-            s += temp;
+        while (temp != null) {
+            s += temp.value + " ";
             temp = temp.next;
         }
         return s;
